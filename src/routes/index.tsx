@@ -5,6 +5,51 @@ import news1 from "@/assets/news-1.jpg";
 import news2 from "@/assets/news-2.jpg";
 import news3 from "@/assets/news-3.jpg";
 
+// ─── Produtos ──────────────────────────────────────────────────
+const PRODUCTS = [
+  {
+    id: "operacao-resgate",
+    title: "Operação Resgate",
+    description: "Desafio de 7 dias para salvar seu negócio físico da crise digital.",
+    price: "R$ 37,90",
+    href: "https://operacaoresgate.vercel.app",
+    kind: "Produto Digital",
+    logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663699984916/yAZfuScVThGbvxvg.svg",
+  },
+];
+
+// ─── Sistemas ──────────────────────────────────────────────────
+const SYSTEMS = [
+  {
+    id: "captu",
+    name: "Captu",
+    sub: "Inteligência de Mercado",
+    href: "https://captu.vercel.app",
+    logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663699984916/ZEHTPiKwKrXxfFzX.png",
+  },
+  {
+    id: "fury-ads",
+    name: "Fury Ads API",
+    sub: "Monitore campanhas e violações",
+    href: "https://fury-ads-api.vercel.app",
+    logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663699984916/UUyqMsTpicHYuHJg.png",
+  },
+  {
+    id: "vintech",
+    name: "Vintech",
+    sub: "Gestão Vinícola Integrada",
+    href: "https://vintech-nine.vercel.app",
+    logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663699984916/BDlnNGAjNnbfmeve.svg",
+  },
+  {
+    id: "tls-barber",
+    name: "TLS Barber",
+    sub: "Gestão para Barbearias",
+    href: "https://tls-barber.vercel.app",
+    logo: "https://tls-barber.vercel.app/Logo.svg",
+  },
+];
+
 const SOCIALS = [
   {
     name: "LinkedIn",
@@ -62,15 +107,15 @@ type Item = {
 
 const ITEMS: Item[] = [
   {
-    id: "mastering-agents",
-    kind: "curso",
-    title: "Mastering Agents: Automação Total",
-    price: "R$ 497",
-    cta: "Comprar agora",
+    id: "kit-sobrevivencia",
+    kind: "e-book",
+    title: "Kit de Sobrevivência da IA 2026",
+    price: "R$ 37",
+    cta: "Baixar agora",
     href: "#",
-    tags: ["automacao", "avancado", "negocio", "produtividade"],
+    tags: ["iniciante", "pesquisa", "gratuito"],
     reason:
-      "Você quer eliminar tarefas repetitivas e escalar operação — este curso monta agentes que rodam sozinhos.",
+      "Você quer começar do zero sem gastar muito. Um guia prático com os 10 prompts essenciais + link de afiliado Perplexity.",
   },
   {
     id: "prompt-pro",
@@ -79,39 +124,42 @@ const ITEMS: Item[] = [
     price: "R$ 197",
     cta: "Começar agora",
     href: "#",
-    tags: ["iniciante", "produtividade", "conteudo"],
+    tags: ["produtividade", "conteudo", "curso"],
     reason:
-      "Você está começando e precisa de fundamentos sólidos antes de partir para agentes ou fine-tuning.",
+      "Você quer produzir mais conteúdo e código com IA. Frameworks de prompts que geram posts, artigos e scripts em segundos.",
   },
   {
-    id: "consultoria-1a1",
+    id: "workflow-zero",
+    kind: "template",
+    title: "Workflow Zero: Automações Prontas",
+    price: "R$ 247",
+    cta: "Liberar templates",
+    href: "#",
+    tags: ["produtividade", "automacao", "curso"],
+    reason:
+      "Você quer automatizar tarefas repetitivas. 3 blueprints prontos com tutoriais de agentes que rodam sozinhos.",
+  },
+  {
+    id: "mastering-agents",
+    kind: "curso",
+    title: "Mastering Agents: Automação Total",
+    price: "R$ 497",
+    cta: "Comprar agora",
+    href: "#",
+    tags: ["automacao", "avancado", "mentoria"],
+    reason:
+      "Você já constrói com IA e quer escalar. Curso avançado que ensina a montar agentes autônomos para operação completa.",
+  },
+  {
+    id: "consultoria-estrategica",
     kind: "consultoria",
-    title: "Mentoria 1:1 — Estratégia de IA",
-    price: "R$ 890",
-    cta: "Agendar sessão",
+    title: "Consultoria Estratégica 1:1",
+    price: "R$ 2.500",
+    cta: "Agendar diagnóstico",
     href: "#agenda",
-    tags: ["negocio", "estrategia", "avancado"],
+    tags: ["negocio", "estrategia", "mentoria"],
     reason:
-      "Você lidera um negócio e precisa de um plano sob medida — mentoria direta é o caminho mais curto.",
-  },
-  {
-    id: "perplexity",
-    kind: "ferramenta",
-    title: "Perplexity Pro",
-    cta: "Testar grátis",
-    href: "#",
-    tags: ["pesquisa", "produtividade", "iniciante"],
-    reason:
-      "Você pesquisa muito no dia a dia — Perplexity substitui Google + ChatGPT numa tacada só.",
-  },
-  {
-    id: "claude",
-    kind: "ferramenta",
-    title: "Claude Sonnet 4.5",
-    cta: "Ativar acesso",
-    href: "#",
-    tags: ["conteudo", "codigo", "avancado"],
-    reason: "Você produz muito texto/código e precisa do modelo mais forte em contexto longo.",
+      "Você lidera um negócio e precisa de implantação de IA com governança, segurança e adoção da equipe. Plano sob medida.",
   },
 ];
 
@@ -124,31 +172,91 @@ const QUESTIONS: Question[] = [
     options: [
       { label: "Curioso — mal usei ChatGPT", tags: ["iniciante"] },
       { label: "Uso no dia a dia, quero avançar", tags: ["produtividade"] },
-      { label: "Já construo com IA, quero escalar", tags: ["avancado", "automacao"] },
+      { label: "Já construo com IA, quero escalar", tags: ["avancado"] },
     ],
   },
   {
     id: "objetivo",
     prompt: "Qual seu principal objetivo agora?",
     options: [
-      { label: "Automatizar tarefas repetitivas", tags: ["automacao", "produtividade"] },
-      { label: "Produzir mais conteúdo/código", tags: ["conteudo", "codigo"] },
-      { label: "Definir estratégia de IA no negócio", tags: ["negocio", "estrategia"] },
-      { label: "Pesquisar e aprender mais rápido", tags: ["pesquisa", "iniciante"] },
+      { label: "Automatizar tarefas repetitivas", tags: ["automacao"] },
+      { label: "Produzir mais conteúdo/código", tags: ["conteudo"] },
+      { label: "Definir estratégia de IA no negócio", tags: ["negocio"] },
+      { label: "Pesquisar e aprender mais rápido", tags: ["pesquisa"] },
     ],
   },
   {
     id: "investimento",
     prompt: "Quanto você quer investir agora?",
     options: [
-      { label: "Só ferramentas grátis/baratas", tags: ["iniciante", "produtividade"] },
-      { label: "Um curso definitivo (até R$ 500)", tags: ["conteudo", "automacao"] },
-      { label: "Mentoria direta com especialista", tags: ["negocio", "estrategia", "avancado"] },
+      { label: "Só ferramentas grátis/baratas", tags: ["gratuito"] },
+      { label: "Um curso ou template (até R$ 500)", tags: ["curso"] },
+      { label: "Mentoria direta com especialista", tags: ["mentoria"] },
     ],
   },
 ];
 
+// Mapeamento 1:1 — cada combinação de cenário aponta para um produto específico
+type ScenarioKey = string;
+const SCENARIO_MAP: Record<ScenarioKey, string> = {
+  // Iniciante + Pesquisa + Grátis → Kit de Sobrevivência
+  "iniciante|pesquisa|gratuito": "kit-sobrevivencia",
+  // Iniciante + Conteúdo + Grátis → Kit de Sobrevivência
+  "iniciante|conteudo|gratuito": "kit-sobrevivencia",
+  // Iniciante + Automação + Grátis → Kit de Sobrevivência
+  "iniciante|automacao|gratuito": "kit-sobrevivencia",
+  // Iniciante + Estratégia + Grátis → Kit de Sobrevivência
+  "iniciante|negocio|gratuito": "kit-sobrevivencia",
+  // Produtividade + Automação + Curso → Workflow Zero
+  "produtividade|automacao|curso": "workflow-zero",
+  // Produtividade + Conteúdo + Curso → Prompt Engineering Pro
+  "produtividade|conteudo|curso": "prompt-pro",
+  // Produtividade + Pesquisa + Curso → Prompt Engineering Pro
+  "produtividade|pesquisa|curso": "prompt-pro",
+  // Produtividade + Estratégia + Curso → Workflow Zero
+  "produtividade|negocio|curso": "workflow-zero",
+  // Avançado + Automação + Curso → Mastering Agents
+  "avancado|automacao|curso": "mastering-agents",
+  // Avançado + Conteúdo + Curso → Mastering Agents
+  "avancado|conteudo|curso": "mastering-agents",
+  // Avançado + Pesquisa + Curso → Mastering Agents
+  "avancado|pesquisa|curso": "mastering-agents",
+  // Avançado + Estratégia + Curso → Mastering Agents
+  "avancado|negocio|curso": "mastering-agents",
+  // Qualquer + Estratégia + Mentoria → Consultoria Estratégica
+  "iniciante|negocio|mentoria": "consultoria-estrategica",
+  "produtividade|negocio|mentoria": "consultoria-estrategica",
+  "avancado|negocio|mentoria": "consultoria-estrategica",
+  // Qualquer + Automação + Mentoria → Mastering Agents
+  "iniciante|automacao|mentoria": "mastering-agents",
+  "produtividade|automacao|mentoria": "mastering-agents",
+  "avancado|automacao|mentoria": "mastering-agents",
+  // Qualquer + Conteúdo + Mentoria → Mastering Agents
+  "iniciante|conteudo|mentoria": "mastering-agents",
+  "produtividade|conteudo|mentoria": "mastering-agents",
+  "avancado|conteudo|mentoria": "mastering-agents",
+  // Qualquer + Pesquisa + Mentoria → Consultoria Estratégica
+  "iniciante|pesquisa|mentoria": "consultoria-estrategica",
+  "produtividade|pesquisa|mentoria": "consultoria-estrategica",
+  "avancado|pesquisa|mentoria": "consultoria-estrategica",
+};
+
 function recommend(selectedTags: string[]): Item {
+  // Extrai tags por categoria (nivel, objetivo, investimento)
+  const levelTag = selectedTags.find((t) => ["iniciante", "produtividade", "avancado"].includes(t)) ?? "produtividade";
+  const goalTag = selectedTags.find((t) => ["automacao", "conteudo", "negocio", "pesquisa"].includes(t)) ?? "conteudo";
+  const investTag = selectedTags.find((t) => ["gratuito", "curso", "mentoria"].includes(t)) ?? "curso";
+
+  // Monta a chave do cenário
+  const key = `${levelTag}|${goalTag}|${investTag}`;
+
+  // Tenta match exato
+  if (SCENARIO_MAP[key]) {
+    const found = ITEMS.find((it) => it.id === SCENARIO_MAP[key]);
+    if (found) return found;
+  }
+
+  // Fallback: score por tags (mantém lógica original como segurança)
   const scored = ITEMS.map((it) => ({
     item: it,
     score: it.tags.reduce((s, t) => s + (selectedTags.includes(t) ? 1 : 0), 0),
@@ -411,36 +519,121 @@ function BioPage() {
 
       <section className="mt-12 space-y-4 animate-entrance" style={{ animationDelay: "300ms" }}>
         <h3 className="font-mono text-[11px] uppercase text-muted-foreground tracking-widest font-bold px-1">
-          Aceleração Profissional
+          Catálogo de Produtos
         </h3>
-        <div className="relative overflow-hidden p-6 rounded-2xl bg-accent text-accent-foreground">
-          <div className="absolute top-0 right-0 p-4 font-mono text-3xl font-black opacity-10 uppercase select-none">
-            AI-01
-          </div>
-          <div className="relative space-y-4">
-            <h4 className="text-xl font-display font-extrabold leading-tight">
-              Mastering Agents: Automação Total
-            </h4>
-            <p className="text-sm text-accent-foreground/80 leading-relaxed">
-              Framework completo pra construir agentes autônomos que rodam operação sem você.
-            </p>
-            <div className="flex items-center gap-3">
-              <span className="text-2xl font-bold">R$ 497</span>
-              <span className="px-2 py-0.5 bg-white/20 rounded text-[10px] font-mono uppercase">
-                Vagas Limitadas
-              </span>
-            </div>
+        <div className="space-y-3">
+          {ITEMS.map((item) => (
             <a
-              href="#"
-              className="inline-block px-4 py-2 bg-white text-accent rounded-lg font-bold text-sm uppercase"
+              key={item.id}
+              href={item.href}
+              className="group flex items-center gap-4 p-4 rounded-2xl border border-border bg-card/50 hover:border-accent/40 transition-colors"
             >
-              Comprar Agora
+              <div className="flex-1 space-y-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="px-1.5 py-0.5 rounded border border-accent/30 text-[9px] font-mono text-accent uppercase">
+                    {item.kind}
+                  </span>
+                </div>
+                <h4 className="text-sm font-bold leading-tight text-pretty">{item.title}</h4>
+                <p className="text-[11px] text-muted-foreground leading-snug">{item.reason}</p>
+              </div>
+              <div className="text-right shrink-0">
+                {item.price && (
+                  <p className="text-sm font-bold text-accent">{item.price}</p>
+                )}
+                <p className="text-[10px] font-mono text-muted-foreground group-hover:text-accent transition-colors mt-1">
+                  {item.cta} →
+                </p>
+              </div>
             </a>
-          </div>
+          ))}
         </div>
       </section>
 
-      <section className="mt-12 space-y-4 animate-entrance" style={{ animationDelay: "400ms" }}>
+      {/* ─── Produtos Próprios ─── */}
+      <section className="mt-12 space-y-4 animate-entrance" style={{ animationDelay: "380ms" }}>
+        <h3 className="font-mono text-[11px] uppercase text-muted-foreground tracking-widest font-bold px-1">
+          Produtos
+        </h3>
+        <div className="space-y-3">
+          {PRODUCTS.map((product) => (
+            <a
+              key={product.id}
+              href={product.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 p-4 rounded-2xl border border-border bg-card/50 hover:border-accent/40 transition-colors"
+            >
+              <div className="shrink-0">
+                <img
+                  src={product.logo}
+                  alt={product.title}
+                  width={40}
+                  height={40}
+                  className="size-10 object-contain"
+                />
+              </div>
+              <div className="flex-1 space-y-1 min-w-0">
+                <h4 className="text-sm font-bold leading-tight text-pretty">{product.title}</h4>
+                <p className="text-[11px] text-muted-foreground leading-snug">{product.description}</p>
+              </div>
+              <div className="text-right shrink-0">
+                {product.price && (
+                  <p className="text-sm font-bold text-accent">{product.price}</p>
+                )}
+                <p className="text-[10px] font-mono text-muted-foreground group-hover:text-accent transition-colors mt-1">
+                  Ver produto →
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── Sistemas ─── */}
+      <section className="mt-12 space-y-4 animate-entrance" style={{ animationDelay: "420ms" }}>
+        <h3 className="font-mono text-[11px] uppercase text-muted-foreground tracking-widest font-bold px-1">
+          Sistemas
+        </h3>
+        <div className="space-y-2">
+          {SYSTEMS.map((sys) => (
+            <a
+              key={sys.id}
+              href={sys.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between p-3 rounded-xl border border-border hover:bg-card hover:border-accent/40 transition-colors"
+            >
+              <div className="flex items-center gap-3">
+                <img
+                  src={sys.logo}
+                  alt={`${sys.name} logo`}
+                  width={36}
+                  height={36}
+                  className="size-9 object-contain"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.style.display = "none";
+                    const fallback = document.createElement("span");
+                    fallback.textContent = sys.name.slice(0, 2).toUpperCase();
+                    fallback.className = "text-[10px] text-accent font-mono";
+                    target.parentElement?.appendChild(fallback);
+                  }}
+                />
+                <div>
+                  <p className="text-sm font-semibold">{sys.name}</p>
+                  <p className="text-[10px] text-muted-foreground">{sys.sub}</p>
+                </div>
+              </div>
+              <button className="px-3 py-1 text-[10px] font-mono border border-border rounded-md hover:border-accent hover:text-accent transition-colors">
+                ACESSAR →
+              </button>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-12 space-y-4 animate-entrance" style={{ animationDelay: "500ms" }}>
         <h3 className="font-mono text-[11px] uppercase text-muted-foreground tracking-widest font-bold px-1">
           Minha Stack (Afiliados)
         </h3>
@@ -470,31 +663,35 @@ function BioPage() {
       <section
         id="agenda"
         className="mt-12 space-y-4 animate-entrance"
-        style={{ animationDelay: "500ms" }}
+        style={{ animationDelay: "600ms" }}
       >
         <h3 className="font-mono text-[11px] uppercase text-muted-foreground tracking-widest font-bold px-1">
-          Agenda: 1:1
+          Consultoria 1:1
         </h3>
-        <div className="p-5 rounded-2xl bg-card border border-border">
-          <p className="text-sm mb-4">
-            60 minutos, direto ao ponto. Diagnóstico e roadmap por escrito depois da call.
-          </p>
-          <div className="grid grid-cols-3 gap-2 mb-4">
-            {["QUI 24", "SEX 25", "SEG 28"].map((d) => (
-              <button
-                key={d}
-                className="py-2 rounded-lg border border-border font-mono text-xs hover:border-accent hover:text-accent transition-colors"
-              >
-                {d}
-              </button>
-            ))}
+        <div className="relative overflow-hidden p-5 rounded-2xl bg-card border border-border">
+          <div className="absolute top-0 right-0 p-3 font-mono text-2xl font-black opacity-5 uppercase select-none">
+            AI-05
           </div>
-          <a
-            href="#"
-            className="block w-full py-3 text-center bg-foreground text-background rounded-lg font-bold text-sm"
-          >
-            Ver todos horários
-          </a>
+          <div className="relative">
+            <p className="text-sm mb-2">
+              Sessão de 60 minutos com diagnóstico completo e roadmap escrito de implementação de IA no seu negócio.
+            </p>
+            <p className="text-xs text-muted-foreground mb-4">
+              Ideal para líderes que precisam de governança, segurança de dados e plano de adoção.
+            </p>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xl font-bold text-accent">R$ 2.500</span>
+              <span className="px-2 py-0.5 rounded bg-accent/10 border border-accent/30 text-[10px] font-mono uppercase text-accent">
+                High-Ticket
+              </span>
+            </div>
+            <a
+              href="#"
+              className="block w-full py-3 text-center bg-foreground text-background rounded-lg font-bold text-sm"
+            >
+              Agendar Diagnóstico
+            </a>
+          </div>
         </div>
       </section>
 
