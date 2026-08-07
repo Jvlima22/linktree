@@ -5,19 +5,6 @@ import news1 from "@/assets/news-1.jpg";
 import news2 from "@/assets/news-2.jpg";
 import news3 from "@/assets/news-3.jpg";
 
-// ─── Produtos ──────────────────────────────────────────────────
-const PRODUCTS = [
-  {
-    id: "operacao-resgate",
-    title: "Operação Resgate",
-    description: "Desafio de 7 dias para salvar seu negócio físico da crise digital.",
-    price: "R$ 37,90",
-    href: "https://operacaoresgate.vercel.app",
-    kind: "Produto Digital",
-    logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663699984916/yAZfuScVThGbvxvg.svg",
-  },
-];
-
 // ─── Sistemas ──────────────────────────────────────────────────
 const SYSTEMS = [
   {
@@ -46,7 +33,7 @@ const SYSTEMS = [
     name: "TLS Barber",
     sub: "Gestão para Barbearias",
     href: "https://tls-barber.vercel.app",
-    logo: "https://tls-barber.vercel.app/Logo.svg",
+    logo: "/scissor.png",
   },
 ];
 
@@ -96,7 +83,7 @@ export const Route = createFileRoute("/")({
 
 type Item = {
   id: string;
-  kind: "curso" | "ferramenta" | "consultoria";
+  kind: "curso" | "ferramenta" | "consultoria" | "Produto Digital" | "e-book" | "template";
   title: string;
   price?: string;
   cta: string;
@@ -107,10 +94,19 @@ type Item = {
 
 const ITEMS: Item[] = [
   {
+    id: "operacao-resgate",
+    kind: "Produto Digital",
+    title: "Operação Resgate",
+    cta: "Iniciar meu resgate",
+    href: "https://operacaoresgate.vercel.app",
+    tags: ["negocio", "gratuito"],
+    reason:
+      "Desafio de 7 dias para salvar seu negócio físico da crise digital. Sem entender nada de tecnologia.",
+  },
+  {
     id: "kit-sobrevivencia",
     kind: "e-book",
     title: "Kit de Sobrevivência da IA 2026",
-    price: "R$ 37",
     cta: "Baixar agora",
     href: "#",
     tags: ["iniciante", "pesquisa", "gratuito"],
@@ -121,7 +117,6 @@ const ITEMS: Item[] = [
     id: "prompt-pro",
     kind: "curso",
     title: "Prompt Engineering Pro",
-    price: "R$ 197",
     cta: "Começar agora",
     href: "#",
     tags: ["produtividade", "conteudo", "curso"],
@@ -132,7 +127,6 @@ const ITEMS: Item[] = [
     id: "workflow-zero",
     kind: "template",
     title: "Workflow Zero: Automações Prontas",
-    price: "R$ 247",
     cta: "Liberar templates",
     href: "#",
     tags: ["produtividade", "automacao", "curso"],
@@ -143,7 +137,6 @@ const ITEMS: Item[] = [
     id: "mastering-agents",
     kind: "curso",
     title: "Mastering Agents: Automação Total",
-    price: "R$ 497",
     cta: "Comprar agora",
     href: "#",
     tags: ["automacao", "avancado", "mentoria"],
@@ -154,7 +147,6 @@ const ITEMS: Item[] = [
     id: "consultoria-estrategica",
     kind: "consultoria",
     title: "Consultoria Estratégica 1:1",
-    price: "R$ 2.500",
     cta: "Agendar diagnóstico",
     href: "#agenda",
     tags: ["negocio", "estrategia", "mentoria"],
@@ -359,7 +351,7 @@ function BioPage() {
           </div>
           <p className="text-zinc-400 text-sm leading-relaxed text-pretty">
             Traduzindo o caos do silício em estratégia. Criador do framework{" "}
-            <span className="text-foreground font-mono">[SENTIENT-UX]</span>.
+            <span className="text-foreground font-mono">[SENTIENT-AI]</span>.
           </p>
         </div>
       </header>
@@ -538,51 +530,8 @@ function BioPage() {
                 <p className="text-[11px] text-muted-foreground leading-snug">{item.reason}</p>
               </div>
               <div className="text-right shrink-0">
-                {item.price && (
-                  <p className="text-sm font-bold text-accent">{item.price}</p>
-                )}
                 <p className="text-[10px] font-mono text-muted-foreground group-hover:text-accent transition-colors mt-1">
                   {item.cta} →
-                </p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* ─── Produtos Próprios ─── */}
-      <section className="mt-12 space-y-4 animate-entrance" style={{ animationDelay: "380ms" }}>
-        <h3 className="font-mono text-[11px] uppercase text-muted-foreground tracking-widest font-bold px-1">
-          Produtos
-        </h3>
-        <div className="space-y-3">
-          {PRODUCTS.map((product) => (
-            <a
-              key={product.id}
-              href={product.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-4 p-4 rounded-2xl border border-border bg-card/50 hover:border-accent/40 transition-colors"
-            >
-              <div className="shrink-0">
-                <img
-                  src={product.logo}
-                  alt={product.title}
-                  width={40}
-                  height={40}
-                  className="size-10 object-contain"
-                />
-              </div>
-              <div className="flex-1 space-y-1 min-w-0">
-                <h4 className="text-sm font-bold leading-tight text-pretty">{product.title}</h4>
-                <p className="text-[11px] text-muted-foreground leading-snug">{product.description}</p>
-              </div>
-              <div className="text-right shrink-0">
-                {product.price && (
-                  <p className="text-sm font-bold text-accent">{product.price}</p>
-                )}
-                <p className="text-[10px] font-mono text-muted-foreground group-hover:text-accent transition-colors mt-1">
-                  Ver produto →
                 </p>
               </div>
             </a>
