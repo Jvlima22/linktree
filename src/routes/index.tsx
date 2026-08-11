@@ -253,11 +253,44 @@ function recommend(selectedTags: string[]): Item {
 
 
 const TOOLS = [
-  { name: "Perplexity Pro", sub: "Search do futuro", logo: "PX", href: "https://www.perplexity.ai/pro" },
-  { name: "Claude Sonnet 4.5", sub: "Reasoning avançado", logo: "CL", href: "https://claude.ai" },
-  { name: "Cursor", sub: "IDE nativo em IA", logo: "CR", href: "https://cursor.com" },
-  { name: "ElevenLabs v3", sub: "Voz sintética viva", logo: "EL", href: "https://elevenlabs.io" },
+  // Texto
+  { name: "Claude Sonnet 4.5", sub: "Reasoning avançado", cat: "Texto", domain: "claude.ai", href: "https://claude.ai" },
+  { name: "Perplexity Pro", sub: "Search do futuro", cat: "Texto", domain: "perplexity.ai", href: "https://www.perplexity.ai/pro" },
+  { name: "ChatGPT", sub: "Assistente generalista", cat: "Texto", domain: "chatgpt.com", href: "https://chatgpt.com" },
+  { name: "Gemini", sub: "IA multimodal do Google", cat: "Texto", domain: "gemini.google.com", href: "https://gemini.google.com" },
+
+  // Imagem
+  { name: "Midjourney", sub: "Arte generativa", cat: "Imagem", domain: "midjourney.com", href: "https://www.midjourney.com" },
+  { name: "Ideogram", sub: "Imagens com texto nítido", cat: "Imagem", domain: "ideogram.ai", href: "https://ideogram.ai" },
+  { name: "Leonardo AI", sub: "Geração para produtos", cat: "Imagem", domain: "leonardo.ai", href: "https://leonardo.ai" },
+  { name: "Adobe Firefly", sub: "IA integrada ao Adobe", cat: "Imagem", domain: "firefly.adobe.com", href: "https://firefly.adobe.com" },
+
+  // Código
+  { name: "Cursor", sub: "IDE nativo em IA", cat: "Código", domain: "cursor.com", href: "https://cursor.com" },
+  { name: "GitHub Copilot", sub: "Par de programação IA", cat: "Código", domain: "github.com", href: "https://github.com/features/copilot" },
+  { name: "Windsurf", sub: "Editor agentic de código", cat: "Código", domain: "windsurf.com", href: "https://windsurf.com" },
+  { name: "v0", sub: "UI gerada por prompt", cat: "Código", domain: "v0.dev", href: "https://v0.dev" },
+
+  // Vídeo
+  { name: "Runway", sub: "Geração de vídeo com IA", cat: "Vídeo", domain: "runwayml.com", href: "https://runwayml.com" },
+  { name: "Pika", sub: "Vídeos curtos generativos", cat: "Vídeo", domain: "pika.art", href: "https://pika.art" },
+  { name: "Luma Dream Machine", sub: "Vídeo cinematográfico IA", cat: "Vídeo", domain: "lumalabs.ai", href: "https://lumalabs.ai" },
+  { name: "HeyGen", sub: "Avatares e dublagem IA", cat: "Vídeo", domain: "heygen.com", href: "https://www.heygen.com" },
+
+  // Áudio
+  { name: "ElevenLabs v3", sub: "Voz sintética viva", cat: "Áudio", domain: "elevenlabs.io", href: "https://elevenlabs.io" },
+  { name: "Suno", sub: "Músicas geradas por IA", cat: "Áudio", domain: "suno.com", href: "https://suno.com" },
+  { name: "Udio", sub: "Composição musical IA", cat: "Áudio", domain: "udio.com", href: "https://www.udio.com" },
+  { name: "Murf", sub: "Locução profissional IA", cat: "Áudio", domain: "murf.ai", href: "https://murf.ai" },
+
+  // Produtividade
+  { name: "Notion AI", sub: "Notas e docs com IA", cat: "Produtividade", domain: "notion.com", href: "https://www.notion.com/product/ai" },
+  { name: "Zapier", sub: "Automação entre apps", cat: "Produtividade", domain: "zapier.com", href: "https://zapier.com" },
+  { name: "Motion", sub: "Agenda com IA", cat: "Produtividade", domain: "usemotion.com", href: "https://www.usemotion.com" },
+  { name: "Superhuman", sub: "Email turbinado por IA", cat: "Produtividade", domain: "superhuman.com", href: "https://superhuman.com" },
 ];
+
+const TOOL_CATEGORIES = ["Texto", "Imagem", "Código", "Vídeo", "Áudio", "Produtividade"];
 
 const WA_NUMBER = "5511912717376";
 const WA_MSG = encodeURIComponent("Oi Jota! Vim pelo seu link na bio 👋");
@@ -265,7 +298,10 @@ const WA_MSG = encodeURIComponent("Oi Jota! Vim pelo seu link na bio 👋");
 function BioPage() {
   const [step, setStep] = useState<"idle" | "quiz" | "result">("idle");
   const [answers, setAnswers] = useState<string[][]>([]);
+  const [toolFilter, setToolFilter] = useState<string>("Texto");
   const current = answers.length;
+
+  const filteredTools = TOOLS.filter((t) => t.cat === toolFilter);
 
   const recommendation = useMemo(() => {
     if (step !== "result") return null;
@@ -534,10 +570,29 @@ function BioPage() {
 
       <section className="mt-12 space-y-4 animate-entrance" style={{ animationDelay: "500ms" }}>
         <h3 className="font-mono text-[11px] uppercase text-muted-foreground tracking-widest font-bold px-1">
-          Minha Stack (Afiliados)
+          Minha Stack
         </h3>
+
+        {/* Chips de Filtro por Categoria */}
+        <div className="flex gap-2 overflow-x-auto scrollbar-none px-1 -mx-1 pb-1" style={{ scrollbarWidth: "none" }}>
+          {TOOL_CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setToolFilter(cat)}
+              className={`shrink-0 px-3 py-1.5 rounded-full text-[10px] font-mono uppercase border transition-colors ${
+                toolFilter === cat
+                  ? "bg-foreground text-background border-foreground"
+                  : "border-border text-muted-foreground hover:border-accent/40 hover:text-accent"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         <div className="space-y-2">
-          {TOOLS.map((t) => (
+          {filteredTools.map((t) => (
             <a
               key={t.name}
               href={t.href}
@@ -546,8 +601,13 @@ function BioPage() {
               className="flex items-center justify-between p-3 rounded-xl border border-border hover:bg-card hover:border-accent/40 transition-colors"
             >
               <div className="flex items-center gap-3">
-                <div className="size-9 rounded bg-card grid place-items-center text-[10px] text-accent font-mono border border-border">
-                  {t.logo}
+                <div className="size-9 rounded-lg bg-card grid place-items-center border border-border overflow-hidden p-1.5">
+                  <img
+                    src={`https://www.google.com/s2/favicons?domain=${t.domain}&sz=64`}
+                    alt={`Logo ${t.name}`}
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                  />
                 </div>
                 <div>
                   <p className="text-sm font-semibold">{t.name}</p>
@@ -582,13 +642,12 @@ function BioPage() {
               Ideal para líderes que precisam de governança, segurança de dados e plano de adoção.
             </p>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-xl font-bold text-accent">R$ 2.500</span>
               <span className="px-2 py-0.5 rounded bg-accent/10 border border-accent/30 text-[10px] font-mono uppercase text-accent">
                 High-Ticket
               </span>
             </div>
             <button
-              data-cal-link="SEU-USUARIO/SEU-EVENTO"
+              data-cal-link="jotadev.ai/60min"
               data-cal-config='{"theme":"dark"}'
               className="block w-full py-3 text-center bg-foreground text-background rounded-lg font-bold text-sm"
             >
