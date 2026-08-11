@@ -363,7 +363,7 @@ function BioPage() {
                 onClick={startQuiz}
                 className="w-full py-3 bg-foreground text-background font-display font-bold rounded-lg transition-transform active:scale-[0.98] hover:bg-foreground/90"
               >
-                Iniciar diagnóstico com IA
+                Iniciar diagnóstico IA
               </button>
               <div className="flex justify-center gap-1 mt-4">
                 {QUESTIONS.map((_, i) => (
