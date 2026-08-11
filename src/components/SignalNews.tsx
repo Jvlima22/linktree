@@ -76,54 +76,59 @@ export function SignalNews() {
 
   return (
     <div className="news-container space-y-3">
-      <div className="flex justify-between items-center px-1">
-        <h4 className="font-mono text-[11px] uppercase text-muted-foreground tracking-widest font-bold flex items-center gap-2">
+      <div className="flex flex-col gap-2 px-1 sm:flex-row sm:items-center sm:justify-between">
+        <h4 className="font-mono text-[11px] uppercase text-muted-foreground tracking-widest font-bold">
           SIGNAL: NOTÍCIAS 2026
-          {isLive && (
-            <span className="flex items-center gap-1 text-[9px] text-accent font-normal border border-accent/30 px-1.5 py-0.2 rounded-full">
-              <span className="size-1.5 rounded-full bg-accent animate-pulse" />
-              Ao Vivo
-            </span>
-          )}
         </h4>
-        
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => {
-              setLoading(true);
-              getNoticiasTech().then((data) => {
-                if (data && data.length > 0) {
-                  setNoticias(data);
-                  setIsLive(true);
-                }
-                setLoading(false);
-              });
-            }}
-            className="text-[10px] text-accent cursor-pointer hover:underline font-mono bg-transparent border-none mr-1"
-          >
-            {loading ? "Atualizando..." : "Atualizar ↻"}
-          </button>
 
-          {/* Seta Esquerda */}
-          <button
-            type="button"
-            aria-label="Notícia Anterior"
-            onClick={() => scroll("left")}
-            className="size-7 rounded-lg border border-border bg-card/80 flex items-center justify-center text-xs text-muted-foreground hover:text-accent hover:border-accent/40 active:scale-95 transition-all"
-          >
-            ←
-          </button>
-          
-          {/* Seta Direita */}
-          <button
-            type="button"
-            aria-label="Próxima Notícia"
-            onClick={() => scroll("right")}
-            className="size-7 rounded-lg border border-border bg-card/80 flex items-center justify-center text-xs text-muted-foreground hover:text-accent hover:border-accent/40 active:scale-95 transition-all"
-          >
-            →
-          </button>
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-3">
+            {isLive && (
+              <span className="flex items-center gap-1 text-[9px] text-accent font-normal border border-accent/30 px-1.5 py-0.2 rounded-full whitespace-nowrap">
+                <span className="size-1.5 rounded-full bg-accent animate-pulse" />
+                Ao Vivo
+              </span>
+            )}
+
+            <button
+              type="button"
+              onClick={() => {
+                setLoading(true);
+                getNoticiasTech().then((data) => {
+                  if (data && data.length > 0) {
+                    setNoticias(data);
+                    setIsLive(true);
+                  }
+                  setLoading(false);
+                });
+              }}
+              className="text-[10px] text-accent cursor-pointer hover:underline font-mono bg-transparent border-none whitespace-nowrap"
+            >
+              {loading ? "Atualizando..." : "Atualizar ↻"}
+            </button>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {/* Seta Esquerda */}
+            <button
+              type="button"
+              aria-label="Notícia Anterior"
+              onClick={() => scroll("left")}
+              className="size-7 rounded-lg border border-border bg-card/80 flex items-center justify-center text-xs text-muted-foreground hover:text-accent hover:border-accent/40 active:scale-95 transition-all"
+            >
+              ←
+            </button>
+
+            {/* Seta Direita */}
+            <button
+              type="button"
+              aria-label="Próxima Notícia"
+              onClick={() => scroll("right")}
+              className="size-7 rounded-lg border border-border bg-card/80 flex items-center justify-center text-xs text-muted-foreground hover:text-accent hover:border-accent/40 active:scale-95 transition-all"
+            >
+              →
+            </button>
+          </div>
         </div>
       </div>
 
