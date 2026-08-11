@@ -253,10 +253,10 @@ function recommend(selectedTags: string[]): Item {
 
 
 const TOOLS = [
-  { name: "Perplexity Pro", sub: "Search do futuro", logo: "PX" },
-  { name: "Claude Sonnet 4.5", sub: "Reasoning avançado", logo: "CL" },
-  { name: "Cursor", sub: "IDE nativo em IA", logo: "CR" },
-  { name: "ElevenLabs v3", sub: "Voz sintética viva", logo: "EL" },
+  { name: "Perplexity Pro", sub: "Search do futuro", logo: "PX", href: "https://www.perplexity.ai/pro" },
+  { name: "Claude Sonnet 4.5", sub: "Reasoning avançado", logo: "CL", href: "https://claude.ai" },
+  { name: "Cursor", sub: "IDE nativo em IA", logo: "CR", href: "https://cursor.com" },
+  { name: "ElevenLabs v3", sub: "Voz sintética viva", logo: "EL", href: "https://elevenlabs.io" },
 ];
 
 const WA_NUMBER = "5511912717376";
@@ -538,9 +538,12 @@ function BioPage() {
         </h3>
         <div className="space-y-2">
           {TOOLS.map((t) => (
-            <div
+            <a
               key={t.name}
-              className="flex items-center justify-between p-3 rounded-xl border border-border hover:bg-card transition-colors"
+              href={t.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between p-3 rounded-xl border border-border hover:bg-card hover:border-accent/40 transition-colors"
             >
               <div className="flex items-center gap-3">
                 <div className="size-9 rounded bg-card grid place-items-center text-[10px] text-accent font-mono border border-border">
@@ -551,10 +554,10 @@ function BioPage() {
                   <p className="text-[10px] text-muted-foreground">{t.sub}</p>
                 </div>
               </div>
-              <button className="px-3 py-1 text-[10px] font-mono border border-border rounded-md hover:border-accent hover:text-accent transition-colors">
+              <span className="px-3 py-1 text-[10px] font-mono border border-border rounded-md hover:border-accent hover:text-accent transition-colors">
                 TESTAR GRÁTIS
-              </button>
-            </div>
+              </span>
+            </a>
           ))}
         </div>
       </section>
