@@ -373,7 +373,7 @@ function BioPage() {
           </div>
           <p className="text-zinc-400 text-sm leading-relaxed text-pretty">
             Traduzindo o caos do silício em estratégia. Criador do framework{" "}
-            <a href="https://jotadev.ai/sentient-ai" className="text-foreground font-mono">[SENTIENT-AI]</a>.
+            <a href="https://sentientai-app.vercel.app/" className="text-foreground font-mono">[SENTIENT-AI]</a>.
           </p>
         </div>
       </header>
@@ -449,9 +449,8 @@ function BioPage() {
                 {QUESTIONS.map((_, i) => (
                   <div
                     key={i}
-                    className={`h-1 w-8 rounded-full transition-colors ${
-                      i <= current ? "bg-accent" : "bg-zinc-800"
-                    }`}
+                    className={`h-1 w-8 rounded-full transition-colors ${i <= current ? "bg-accent" : "bg-zinc-800"
+                      }`}
                   />
                 ))}
               </div>
@@ -580,11 +579,10 @@ function BioPage() {
               key={cat}
               type="button"
               onClick={() => setToolFilter(cat)}
-              className={`shrink-0 px-3 py-1.5 rounded-full text-[10px] font-mono uppercase border transition-colors ${
-                toolFilter === cat
+              className={`shrink-0 px-3 py-1.5 rounded-full text-[10px] font-mono uppercase border transition-colors ${toolFilter === cat
                   ? "bg-foreground text-background border-foreground"
                   : "border-border text-muted-foreground hover:border-accent/40 hover:text-accent"
-              }`}
+                }`}
             >
               {cat}
             </button>
